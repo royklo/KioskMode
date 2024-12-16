@@ -10,7 +10,6 @@ $Helpers = [Tomin.Tools.KioskMode.Helper]
 
 if (!$EdgeStartDelay) { $EdgeStartDelay = 3 }
 if (!$EdgePath) { $EdgePath = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe' }
-#if (!$EdgePath) {$EdgePath = 'C:\Program Files (x86)\Google\Edge\Application\Edge.exe'}
 if (!$EdgeArguments) { $EdgeArguments = '--new-window --incognito' }
 
 function Wait-ForProcess($procName, $procTitle) {
@@ -47,7 +46,7 @@ function Cockpit-Start($MonitorNum) {
     Start-Process $cockpitPath
 
     #main window
-    $window = (Wait-ForProcess  .Cockpit.CommunicationSpace 'COCKPIT COMMUNICATION SPACE' | Select-Object -First 1).MainWindowHandle
+    $window = (Wait-ForProcess .Cockpit.CommunicationSpace 'COCKPIT COMMUNICATION SPACE' | Select-Object -First 1).MainWindowHandle
     
     $WinAPI::ShowWindow($window, [Tomin.Tools.KioskMode.Enums.ShowWindowCommands]::Restore)
     $Helpers::MoveToMonitor($window, $MonitorNum)
