@@ -12,7 +12,7 @@ if (!$EdgeStartDelay) { $EdgeStartDelay = 3 }
 if (!$EdgePath) { $EdgePath = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe' }
 if (!$EdgeArguments) { $EdgeArguments = '--new-window --incognito' }
 
-function Wait-ForProcess($procName, $procTitle) {
+function Global:Wait-ForProcess($procName, $procTitle) {
     $sw = [Diagnostics.Stopwatch]::StartNew()
     while ($true) {
         $res = Get-Process -Name $procName | Where-Object { $_.MainWindowHandle -ne ([IntPtr]::Zero) -and (!$procTitle -or $_.MainWindowTitle -eq $procTitle) }
