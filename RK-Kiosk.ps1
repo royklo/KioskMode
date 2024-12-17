@@ -11,7 +11,7 @@ $EdgeArguments = '--new-window --incognito'
 # if Window not moved (especially on machine start) - try increaing the delay. 
 $EdgeStartDelay = 3
 
-#Set-Location $PSScriptRoot
+Set-Location $PSScriptRoot
 .\HelperFunctions.ps1
 
 # Kill all running instances
@@ -19,4 +19,3 @@ $EdgeStartDelay = 3
 
 Edge-Kiosk 'https://google.com' -MonitorNum 1 
 Edge-Kiosk 'https://github.com' -MonitorNum 2
-

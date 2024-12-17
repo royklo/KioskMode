@@ -28,10 +28,9 @@ function Wait-ForProcess($procName, $procTitle) {
     }
 }
 
-function Edge-Kiosk($Url, $MonitorNum) {
+function Global:Edge-Kiosk($Url, $MonitorNum) {
     Write-Output "starting Edge $Url , monitor: $MonitorNum"
     Start-Process $EdgePath "$EdgeArguments $Url"
-    #Start-Process $EdgePath "$EdgeArguments $Url"
     Start-Sleep -Seconds $EdgeStartDelay
 
     $window = (Get-Process -Name msedge | Where-Object MainWindowHandle -NE ([IntPtr]::Zero) | Select-Object -First 1).MainWindowHandle
@@ -42,7 +41,7 @@ function Edge-Kiosk($Url, $MonitorNum) {
     Start-Sleep -Seconds $EdgeStartDelay
 }
 
-function Cockpit-Start($MonitorNum) {
+function Global:Cockpit-Start($MonitorNum) {
     Start-Process $cockpitPath
 
     #main window
